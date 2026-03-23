@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/bas-d/appattest/authenticator"
-	"github.com/bas-d/appattest/utils"
+	"github.com/tidepool-org/appattest/authenticator"
+	"github.com/tidepool-org/appattest/utils"
 	"github.com/ugorji/go/codec"
 )
 

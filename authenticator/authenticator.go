@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/bas-d/appattest/utils"
+	"github.com/tidepool-org/appattest/utils"
 	"github.com/ugorji/go/codec"
 )
 
