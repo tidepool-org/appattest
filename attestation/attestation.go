@@ -51,7 +51,7 @@ type AttestationObject struct {
 }
 
 func (aar *AuthenticatorAttestationResponse) Verify(appID string, production bool) ([]byte, []byte, error) {
-	a, err := aar.parse()
+	a, err := aar.Parse()
 	if err != nil {
 		return nil, nil, err
 	}
@@ -82,7 +82,7 @@ func (aar *AuthenticatorAttestationResponse) Verify(appID string, production boo
 	return verifyAttestation(*a, clientDataHash[:], keyIdData)
 }
 
-func (aar *AuthenticatorAttestationResponse) parse() (*AttestationObject, error) {
+func (aar *AuthenticatorAttestationResponse) Parse() (*AttestationObject, error) {
 	var a AttestationObject
 
 	cborHandler := codec.CborHandle{}
@@ -156,6 +156,7 @@ func verifyAttestation(att AttestationObject, clientDataHash, keyID []byte) ([]b
 		Roots:         roots,
 		Intermediates: intermediates,
 		CurrentTime:   TimeNow(),
+		KeyUsages:     []x509.ExtKeyUsage{x509.ExtKeyUsageAny},
 	}
 
 	// 1. Verify that the x5c array contains the intermediate and leaf certificates for App Attest,
